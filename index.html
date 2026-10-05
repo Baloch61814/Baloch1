@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBS - Baloch Bouncer Services | Event Security Pakistan</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #d90429;
+            --accent-gold: #ffb703;
+            --bg-dark: #0a0c10;
+            --card-bg: #12161f;
+            --input-bg: #1a202c;
+            --text-light: #f8f9fa;
+            --text-muted: #94a3b8;
+            --border-color: #2d3748;
+            --success-color: #3fb950;
+            --error-color: #f85149;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px 15px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(217, 4, 41, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 183, 3, 0.08) 0%, transparent 40%),
+                linear-gradient(to bottom, rgba(10, 12, 16, 0.8), rgba(10, 12, 16, 0.95));
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 680px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 30px rgba(217, 4, 41, 0.2);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glowing Top Accent Line */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-red), var(--accent-gold), var(--primary-red));
+        }
+
+        /* Header & Stylish Badge Logo */
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 25px;
+        }
+
+        .logo-box {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(145deg, #1f0206, #3a0007);
+            border: 2px solid var(--primary-red);
+            color: var(--accent-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 34px;
+            font-weight: 900;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            box-shadow: 0 0 25px rgba(217, 4, 41, 0.5), inset 0 0 10px rgba(255, 183, 3, 0.3);
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        .logo-box::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            border: 1px dashed rgba(255, 183, 3, 0.4);
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 26px;
+            color: var(--text-light);
+            letter-spacing: 2px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .header p {
+            font-size: 12px;
+            color: var(--accent-gold);
+            margin-top: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+        }
+
+        /* Form Inputs & Grid Styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 18px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 12px rgba(217, 4, 41, 0.4);
+            background: #202736;
+        }
+
+        select option {
+            background: var(--card-bg);
+            color: var(--text-light);
+        }
+
+        /* Submit Button Styling */
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary-red), #b00020);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 6px 20px rgba(217, 4, 41, 0.4);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(217, 4, 41, 0.6);
+            background: linear-gradient(135deg, #ef233c, var(--primary-red));
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        /* Formspree Instructions Card */
+        .instructions-card {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(255, 183, 3, 0.08);
+            border: 1px dashed var(--accent-gold);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #ebd18c;
+            line-height: 1.5;
+        }
+
+        .instructions-card strong {
+            color: var(--accent-gold);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .container {
+                padding: 25px 20px;
+            }
+            .header h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="logo-box">BBS</div>
+        <h1>Baloch Bouncer Services</h1>
+        <p>Premium Event Security Booking</p>
+    </div>
+
+    <!-- 
+      ========================================================================================
+      FORMSPREE SETUP INSTRUCTIONS:
+      Replace 'YOUR_FORM_ID_HERE' in the action URL below with your actual Formspree Form ID.
+      Example: action="https://formspree.io/f/xknlqwor"
+      ========================================================================================
+    -->
+
+   <form action="https://formspree.io/f/mjygbndg" method="POST">
+
+        <div class="form-group">
+            <label for="name">Client / Party Name *</label>
+            <input type="text" id="name" name="Client_Name" placeholder="Enter full name or company name" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <!-- _replyto enables direct email response from Formspree -->
+                <input type="email" id="email" name="_replyto" placeholder="client123@gmail.com" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone / WhatsApp *</label>
+                <input type="tel" id="phone" name="Phone_Number" placeholder="+92 300 1234567" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="gender">Bouncer Preference *</label>
+                <select id="gender" name="Bouncer_Gender" required>
+                    <option value="">Select Option...</option>
+                    <option value="Male Bouncers">Male Bouncers</option>
+                    <option value="Female Bouncers">Female Bouncers</option>
+                    <option value="Male & Female Both">Both (Male & Female)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="bouncersCount">Number of Bouncers *</label>
+                <input type="number" id="bouncersCount" name="Total_Bouncers" min="1" placeholder="e.g. 6" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="eventDate">Event Date *</label>
+                <input type="date" id="eventDate" name="Event_Date" required>
+            </div>
+            <div class="form-group">
+                <label for="dutyHours">Duty Hours & Timings *</label>
+                <input type="text" id="dutyHours" name="Duty_Hours" placeholder="e.g. 6 Hours (8:00 PM to 2:00 AM)" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="budget">Budget (PKR / Per Day) *</label>
+                <input type="text" id="budget" name="Budget" placeholder="e.g. PKR 50,000" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Event Location / City *</label>
+                <input type="text" id="location" name="Event_Location" placeholder="e.g. DHA Phase 6, Karachi" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit Booking Request</button>
+    </form>
+
+   
+    </div>
+</div>
+
+</body>
+</html>
